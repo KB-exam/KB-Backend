@@ -1,8 +1,8 @@
 var express = require('express');
-const db = require('./database/conn/db_conn');
-db.connect();
 var app = express();
 
-
+//회원가입 로직
+const signup = require('./routers/SignUp')
+app.use(signup);
 
 module.exports = app;
