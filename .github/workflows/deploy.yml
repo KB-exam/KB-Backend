@@ -18,7 +18,7 @@ jobs:
         uses: cloudtype-github-actions/deploy@v1
         with:
           token: ${{ secrets.CLOUDTYPE_TOKEN }}
-          project: dong002/postgresql
+          project: dong002/kbexam
           stage: main
           yaml: |
             name: kb-backend
