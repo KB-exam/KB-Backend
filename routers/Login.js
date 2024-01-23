@@ -1,4 +1,4 @@
-const db = require('../database/conn/db_conn');
+const db = require(__dirname + '/../database/conn/db_conn');
 db.connect();
 
 var express = require('express');
