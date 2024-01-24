@@ -17,7 +17,7 @@ router.post('/login', (req, res) => {
         console.log(row)
         if (err) {
             console.log(err);
-            res.send('login fail');
+            res.json({"message": 'login fail'});
         }
         else {
             if (row && row.length > 0) {
@@ -44,15 +44,15 @@ router.post('/login', (req, res) => {
                         //         expiresIn: '14d',
                         //         issuer: 'dongdong'                    
                         //     })
-                        res.send(accsessToken)
+                        res.json({"message": accsessToken})
                     }
                     else {
-                        res.status(401).send('wrong password');
+                        res.status(401).json({"message": 'wrong password'});
                     }
                 })
             }
             else {
-                res.status(402).send('no user')
+                res.status(402).json({"message": 'no user'})
             }
         }
     });
