@@ -38,14 +38,13 @@ router.post('/login', (req, res) => {
                                 issuer: "dogndong"
                             }
                         )
-                        const refreshToken = jwt.sign({},
-                            process.env.JWT_SECRETKEY,
-                            {
-                                expiresIn: '14d',
-                                issuer: 'dongdong'                    
-                            })
-                        const result = [req.body.empNumber,accsessToken,refreshToken]
-                        res.send(result)
+                        // const refreshToken = jwt.sign({},
+                        //     process.env.JWT_SECRETKEY,
+                        //     {
+                        //         expiresIn: '14d',
+                        //         issuer: 'dongdong'                    
+                        //     })
+                        res.send(accsessToken)
                     }
                     else {
                         res.status(401).send('wrong password');
