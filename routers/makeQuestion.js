@@ -6,8 +6,8 @@ const db = require('../database/conn/db_conn');
 var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken')
-exports.router = router;
-
+const cors = require('cors')
+router.use(cors())
 router.use(express.json());
 const insert_4 = 'insert into question (title, content, type, choice1, choice2, choice3, choice4, answer) values (?,?,?,?,?,?,?,?);'
 const insert_2 = 'insert into question (title, content, type, answer) values (?,?,?,?)'

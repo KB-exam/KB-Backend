@@ -7,7 +7,7 @@ var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken')
 exports.router = router;
-
+router.use(cors())
 router.use(express.json());
 
 router.post('/login', (req, res) => {
@@ -44,7 +44,6 @@ router.post('/login', (req, res) => {
                                 issuer: 'dongdong'                    
                             })
                         const result = [req.body.empNumber,accsessToken,refreshToken]
-                        res.header("Access-Control-Allow-Origin", "*");
                         res.send(result)
                     }
                     else {
