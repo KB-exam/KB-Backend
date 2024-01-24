@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt')
 var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken')
-exports.router = router;
+
+const cors = require('cors')
 router.use(cors())
 router.use(express.json());
 

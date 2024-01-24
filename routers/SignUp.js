@@ -1,9 +1,9 @@
 //DB Connect
 const db = require('../database/conn/db_conn');
 const bcrypt = require('bcrypt');
-
 var express = require('express');
 var router = express.Router();
+const cors = require('cors')
 router.use(cors())
 router.use(express.json());
 
