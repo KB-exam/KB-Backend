@@ -12,7 +12,5 @@ module.exports = app;
 const makeQuestion = require('./routers/makeQuestion')
 app.use(makeQuestion)
 
-
-
-
-
+const deleteQuestion = require('./routers/deleteQuestion')
+app.use(deleteQuestion)
