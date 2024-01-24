@@ -27,6 +27,16 @@ jobs:
               env:
                 - name: NODE_ENV
                   value: production
+                - name: DB_PASSWD
+                  value: zpdlqlrnralsdmsgod
+                - name: DB_HOST
+                  value: svc.sel5.cloudtype.app
+                - name: DB_PORT
+                  value: "30055"
+                - name: DB_USER
+                  value: root
+                - name: DB_DATABASE
+                  value: kb
               ports: 3000
             context:
               git:
