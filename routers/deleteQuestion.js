@@ -4,7 +4,6 @@ const db = require('../database/conn/db_conn');
 var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken')
-exports.router = router;
 
 router.use(express.json());
 
