@@ -13,16 +13,15 @@ router.use(express.json());
 router.post('/login', (req, res) => {
     const select = `select * from employees where empNumber = ${req.body.empNumber}`;
     db.query(select, (err, row, fields) => {
-
-        let plainPassword = req.body.password;
-        let hashedPassword = row[0].password;
-
+        console.log(row)
         if (err) {
             console.log(err);
             res.send('login fail');
         }
         else {
             if (row && row.length > 0) {
+                let plainPassword = req.body.password;
+                let hashedPassword = row[0].password;
                 // console.log(req.body.user_pwd)
                 bcrypt.compare(plainPassword, hashedPassword, (err, same) => {
                     if (same) {
@@ -44,9 +43,8 @@ router.post('/login', (req, res) => {
                                 expiresIn: '14d',
                                 issuer: 'dongdong'                    
                             })
-                        res.cookie("user",accsessToken)
-                        res.cookie("setter",refreshToken);
-                        res.send(param);
+                        const result = [req.body.empNumber,accsessToken,refreshToken]
+                        res.send(result)
                     }
                     else {
                         res.status(401).send('wrong password');
