@@ -1,11 +1,7 @@
 //DB Connect
-const path = require('path');
-require('app-module-path').addPath(path.join(__dirname, '/../'));
+const db = require('../database/conn/db_conn');
 
-const db = require('database/conn/db_conn');
-
-// const db = require('/../database/conn/db_conn');
-db.connect();
+//db.connect();
 
 
 
