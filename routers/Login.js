@@ -17,7 +17,7 @@ router.post('/login', (req, res) => {
         console.log(row)
         if (err) {
             console.log(err);
-            res.json({"message": 'login fail'});
+            res.status(500).json({"message": 'login fail'});
         }
         else {
             if (row && row.length > 0) {

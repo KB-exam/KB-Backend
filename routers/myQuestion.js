@@ -13,7 +13,7 @@ router.post('/myQuestion', (req, res) => {
         if (err) return res.status(403).send("유효하지 않은 토큰입니다.");
         const empNumber = decoded.param[0];
 
-        const selectSql = `select title, empNumber from question where empNumber = ${empNumber}`;
+        const selectSql = `select title, empNumber, questionId from question where empNumber = ${empNumber}`;
 
         db.query(selectSql, (err, result) => {
             if(err) {

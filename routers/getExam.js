@@ -17,7 +17,7 @@ router.post('/getExam', (req, res) => {
             }
             else {
                 if (row && row.length > 0) {
-                    res.status(200).json({"message": row})
+                    res.status(200).json(row)
                 }
                 else {
                     res.status(402).json({"message": 'no user'})
