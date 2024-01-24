@@ -13,17 +13,18 @@ router.post('/login', (req, res) => {
     console.log(req.body)
     const select = `select * from employees where empNumber = ${req.body.empNumber}`;
     db.query(select, (err, row, fields) => {
+        console.log(row)
         if (err) {
             console.log(err);
             res.send('login fail');
         }
         else {
-            if (row) {
+            if (row && row.length > 0) {
                 // console.log(req.body.user_pwd)
                 if (req.body.password === row[0].password) {
-                    const param = [req.body.empNumber];
+                    const param = [req.body.empNumber]
                     res.cookie("user", param);
-                    res.send('로그인 성공');
+                    res.send(param);
                 }
                 else {
                     res.status(401).send('wrong password');
