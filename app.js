@@ -9,6 +9,10 @@ const login = require('./routers/Login')
 app.use(login)
 module.exports = app;
 
+const makeQuestion = require('./routers/makeQuestion')
+app.use(makeQuestion)
+
+
 
 
 

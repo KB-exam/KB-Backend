@@ -28,15 +28,17 @@ jobs:
                 - name: NODE_ENV
                   value: production
                 - name: DB_PASSWD
-                  value: zpdlqlrnralsdmsgod
+                  secret: DB_PASSWD
                 - name: DB_HOST
-                  value: svc.sel5.cloudtype.app
+                  secret: DB_HOST
                 - name: DB_PORT
-                  value: "30055"
+                  secret: DB_PORT
                 - name: DB_USER
-                  value: root
+                  secret: DB_USER
                 - name: DB_DATABASE
-                  value: kb
+                  secret: DB_DATABASE
+                - name: JWT_SECRETKEY
+                  secret: JWT_SECRETKEY
               ports: 3000
             context:
               git:
