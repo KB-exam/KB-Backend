@@ -18,15 +18,19 @@ router.post('/login', (req, res) => {
             res.send('login fail');
         }
         else {
-            console.log(row);
-            // console.log(req.body.user_pwd)
-            if (req.body.password === row[0].password) {
-                const param = [req.body.empNumber];
-                res.cookie("user", param);
-                res.send('로그인 성공');
+            if (row) {
+                // console.log(req.body.user_pwd)
+                if (req.body.password === row[0].password) {
+                    const param = [req.body.empNumber];
+                    res.cookie("user", param);
+                    res.send('로그인 성공');
+                }
+                else {
+                    res.status(401).send('wrong password');
+                }
             }
             else {
-                res.send('wrong password');
+                res.status(402).send('no user')
             }
         }
     });
