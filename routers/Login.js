@@ -10,8 +10,9 @@ exports.router = router;
 router.use(express.json());
 
 router.post('/login', (req, res) => {
-    const select = 'select * from employees where empNumber = ?';
-    db.query(select, req.body.empNumber, (err, row, fields) => {
+    console.log(req.body)
+    const select = `select * from employees where empNumber = ${req.body.empNumber}`;
+    db.query(select, (err, row, fields) => {
         if (err) {
             console.log(err);
             res.send('login fail');
