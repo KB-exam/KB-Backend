@@ -19,8 +19,8 @@ router.post('/login', (req, res) => {
         else {
             console.log(row);
             // console.log(req.body.user_pwd)
-            if (req.body.user_pwd === row[0].password) {
-                const param = [req.body.user_id];
+            if (req.body.password === row[0].password) {
+                const param = [req.body.empNumber];
                 res.cookie("user", param);
                 res.send('로그인 성공');
             }
