@@ -12,28 +12,47 @@ router.use(express.json());
 const insert_4 = 'insert into question (title, content, type, choice1, choice2, choice3, choice4, answer) values (?,?,?,?,?,?,?,?);'
 const insert_2 = 'insert into question (title, content, type, answer) values (?,?,?,?)'
 router.post('/makeQuestion', (req, res) => {
-    if (req.body.type == 2){
-        db.query(insert_2, [req.body.title, req.body.content, req.body.type, req.body.answer], (err, row, fields) => {
+    jwt.verify(req.body.accessToken, process.env.JWT_SECRETKEY, (err, decoded) => {
+        if (err) return res.status(403).send("유효하지 않은 토큰입니다.");
+        const user = decoded.param[0];
+        db.query('select * from employees where empNumber = ?', user, (err, row, fields) => {
             if (err) {
                 console.log(err);
-                res.send('make fail');
+                res.send('something wrong');
             }
             else {
-                res.send('suc OX')
+                if (row && row.length > 0) {
+                    if (req.body.type == 2){
+                        db.query(insert_2, [req.body.title, req.body.content, req.body.type, req.body.answer], (err, row, fields) => {
+                            if (err) {
+                                console.log(err);
+                                res.send('make fail');
+                            }
+                            else {
+                                res.send('suc OX')
+                            }
+                        });
+                    }
+                    else if (req.body.type == 4){
+                        db.query(insert_4, [req.body.title, req.body.content, req.body.type, req.body.choice1, req.body.choice2, req.body.choice3, req.body.choice4, req.body.answer], (err, row, fields) => {
+                            if (err) {
+                                console.log(err);
+                                res.send('make fail');
+                            }
+                            else {
+                                res.send('suc 4')
+                            }
+                        });
+                    }
+                }
+                else {
+                    res.status(402).send('no user')
+                }
             }
-        });
-    }
-    else if (req.body.type == 4){
-        db.query(insert_4, [req.body.title, req.body.content, req.body.type, req.body.choice1, req.body.choice2, req.body.choice3, req.body.choice4, req.body.answer], (err, row, fields) => {
-            if (err) {
-                console.log(err);
-                res.send('make fail');
-            }
-            else {
-                res.send('suc 4')
-            }
-        });
-    }
+            
+        })
+    });
+    
 });
 
 module.exports = router
