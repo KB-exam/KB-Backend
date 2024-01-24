@@ -44,6 +44,7 @@ router.post('/login', (req, res) => {
                                 issuer: 'dongdong'                    
                             })
                         const result = [req.body.empNumber,accsessToken,refreshToken]
+                        res.header("Access-Control-Allow-Origin", "*");
                         res.send(result)
                     }
                     else {

@@ -28,7 +28,7 @@ router.post('/signup', (req, res) => {
                   console.error('Error inserting data into MySQL:', err);
                   return res.status(500).json({ error: 'Internal server error' });
                 }
-                
+                res.header("Access-Control-Allow-Origin", "*");
                 res.status(201).json({ message: 'User created successfully.' });
             })
         }
