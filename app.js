@@ -14,3 +14,6 @@ app.use(makeQuestion)
 
 const deleteQuestion = require('./routers/deleteQuestion')
 app.use(deleteQuestion)
+
+const myQuestion = require('./routers/myQuestion')
+app.use(myQuestion)
