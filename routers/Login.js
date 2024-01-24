@@ -38,7 +38,8 @@ router.post('/login', (req, res) => {
                         process.env.JWT_SECRETKEY,
                         {
                             expiresIn: '14d',
-                            issuer: 'dongdong'                    })
+                            issuer: 'dongdong'                    
+                        })
                     res.cookie("user",accsessToken)
                     res.cookie("setter",refreshToken);
                     res.send(param);
