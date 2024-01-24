@@ -12,5 +12,8 @@ module.exports = app;
 const makeQuestion = require('./routers/makeQuestion')
 app.use(makeQuestion)
 
+const getExam = require('./routers/getExam')
+app.use(getExam)
+
 const deleteQuestion = require('./routers/deleteQuestion')
 app.use(deleteQuestion)
