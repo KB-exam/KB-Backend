@@ -18,5 +18,7 @@ app.use(getExam)
 const deleteQuestion = require('./routers/deleteQuestion')
 app.use(deleteQuestion)
 
+const allQuestion = require('./routers/allQuestion')
+app.use(allQuestion)
 const myQuestion = require('./routers/myQuestion')
 app.use(myQuestion)
